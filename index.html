@@ -353,6 +353,148 @@
           mejorar la eficiencia operativa y reducir costos.
         </p>
 
+        <div class="project">
+          <div class="project-title">Movilidad urbana y productividad económica en ciudades de LATAM</div>
+          <p>
+            Este análisis busca identificar la relación entre la movilidad urbana, medida por los niveles de congestión 
+            vehicular (jams_delay), y la productividad económica, representada por el PIB per cápita (city_gdp_capita), 
+            en ciudades latinoamericanas durante 2024. El objetivo es detectar patrones que orienten decisiones de 
+            inversión en infraestructura de transporte. Las variables seleccionadas permiten comparar eficiencia urbana 
+            y desarrollo económico a nivel local.
+          </p>
+
+          <div class="project-tools">
+            JUPYTER | PANDAS | NUMPY | SEABORN | MATPLOTLIB.PYPLOT | LIMPIEZA DE DATOS | TRANSFORMACIÓN DE DATOS | 
+            ANÁLISIS EXPLORATORIO | VISUALIZACIÓN
+          </div>
+
+      <!-- Preguntas clave -->
+      <section class="section">
+        <h2>Preguntas clave</h2>
+        <ul>
+          <li>¿Qué ciudades de América Latina presentan alta congestión y baja productividad económica?</li>
+          <li>¿Cuáles muestran los mejores indicadores combinados (movilidad eficiente y economía fuerte)?</li>
+          <li>¿Qué variables parecen tener una relación más fuerte con el desarrollo urbano?</li>
+        </ul>
+      </section>
+
+      <!-- Metodología -->
+      <section class="section">
+        <h2>Metodología</h2>
+        <ul>
+          <li><strong>Preprocesamiento:</strong> Se realizó una limpieza de datos que incluyó la conversión de nombres a 
+            columnas a formato snake_case, estandarización de unidades y corrección de formatos.; se creó un dataset 
+            único y limpio a partir de dos fuentes diferentes (tomtom_traffic.csv y oecd_city_economy.csv).</li>
+          <li><strong>Modelado predictivo:</strong> Los datos fueron agregados por ciudad-año y combinados mediante 
+            una unión INNER entre las tablas de tráfico (traffic) y economía (eco). Se aplicaron validaciones visuales 
+            como boxplots, histogramas y gráficos combinados para detectar distribuciones, valores extremos y 
+            posibles correlaciones.</li>
+        </ul>
+      </section>
+
+      <!-- Conclusiones y recomendaciones -->
+      <section class="section">
+        <h2>Conclusiones y recomendaciones</h2>
+
+        <h3>Hallazgos iniciales:</h3>
+        <p>
+          No se observó una relación directa entre PIB per cápita y congestión vehicular. Algunas ciudades con PIB per 
+          cápita relativamente alto presentan demoras muy grandes (por ejemplo, Ciudad de México y Sao Paulo tienen 
+          barras de congestión altas junto con puntos de PIB elevados). Otras con PIB per cápita también alto muestran 
+          retrasos moderados o bajos, mientras que ciertas ciudades con PIB más bajo presentan demoras intermedias o 
+          reducidas, lo que rompe la idea de que "mas PIB = más congestión".
+        </p>
+
+        <h3>Recomendaciones</h3>
+        <ul>
+          <li> Se recomienda priorizar inversión en ciudades con alta congestión (Jams Delay elevado) y PIB per 
+          cápita medio-alto, donde cada minuto ahorrado tiene mayor económico y social. </li>
+          <li><strong>Criterios para priorizar ciudades:</strong> Alta congestión actual: focos como Ciudad de México, 
+            Sao Paulo, Bogotá y quizá otras con barras muy altas son candidatos naturales, porque concentran muchas 
+            horas perdidas y costos económicos elevados. - PIB per cápita medio-alto: em estas ciudades el tiempo de 
+            los trabajadores vale más, por lo que reducir demoras genera mayores ganancias de productividad por dólar 
+            invertido. - Tamaño poblacional y actividad económica: grandes áreas metropolitanas concentran más empleos 
+            y producción; allí la mejora en accesibilidad impacta a más gente y empresas. </li>
+          <li><strong>Tipo de inversiones recomendadas: </strong> Transporte público masivo y de calidad (metro, BRT, 
+            tren suburbano) en las ciudades más congestionadas; esto reduce viajes en automóvil, mejora tiempos y 
+            disminuye estrés y problemas de salud asociados al tráfico. - Gestión inteligente de la demanda: carriles 
+            exclusivos, sistemas de semaforización inteligente, peajes urbanos y teletrabajo pueden ser más costo-efectivos 
+            que seguir ampliando vías, dado que expandir carreteras suele tener retornos económicos decrecientes.  </li>
+          <li><strong>Enfoque de análisis de priorización:</strong> Calcular para cada ciudad el costo económico anual 
+            de la congestión (horas perdidas × valor del tiempo según PIB per cápita) y priorizar donde el costo sea 
+            mayor respecto al tamaño de la inversión necesaria. - Incorporar indicadores de bienestar (niveles de estrés, 
+            tiempos de viaje casa–trabajo, contaminación) para asegurar que la priorización no solo aumente productividad,
+            sino también el bienestar percibido por la población.</li>
+          <li>También se sugiere validar las fuentes de PIB local y ampliar el análisis con variables complementarias 
+            como densidad poblacional, inversión pública y calidad del transporte. Finalmente, se propone replicar este 
+            modelo en otras regiones para identificar patrones estructurales a nivel continental.</li>
+        </ul>
+      </section>
+
+      <!-- Análisis visual -->
+      <section class="section">
+        <h2>Análisis visual</h2>
+        <p>
+          Este conjunto de visualizaciones permitió comprender la distribución y la relación entre indicadores de tráfico
+          y economía en 2024, para identificar posibles tendencias generales entre ambas variables.
+        </p>
+
+        <h3>1. Boxplot de Jams Delay</h3>
+        <p>
+          Se creó boxplot para observar el comportamiento de los minutos de congestión JamsDelay mediante la media,
+          mediana y detección de valores atípicos.
+        </p>
+      
+        <div style="
+          width:100%;
+          height:300px;
+          background:#e5e7eb;
+          border-radius:8px;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          color:#555;
+          margin-top:20px;">
+          <img src="boxplot_jamsdelay.JPG" alt="Gráfico 5" style="max-width:100%; max-height:100%; object-fit:contain;">
+        </div>
+      
+        <h3>2. Distribución del PIB per capitá por ciudad</h3>
+        <p>
+          Se utilizó histograma para analizar la forma de la distribución y el valor promedio del PIB per cápita. 
+        </p>
+      
+        <div style="
+          width:100%;
+          height:300px;
+          background:#e5e7eb;
+          border-radius:8px;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          color:#555;
+          margin-top:20px;">
+          <img src="pib_per_capita.JPG" alt="Gráfico 6" style="max-width:100%; max-height:100%; object-fit:contain;">
+        </div>
+      
+        <h3>3. Comparación: Jams Delay vs PIB per cápita por ciudad</h3>
+        <p>
+          El gráfico de barras compara jams_delay y city_gdp_capita por ciudad.
+        </p>
+      
+        <div style="
+          width:100%;
+          height:300px;
+          background:#e5e7eb;
+          border-radius:8px;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          color:#555;
+          margin-top:20px;">
+          <img src="comparation.JPG" alt="Gráfico 7" style="max-width:100%; max-height:100%; object-fit:contain;">
+        </div>
+
+
       </section>
       <!-- Contacto -->
       <section class="section">
